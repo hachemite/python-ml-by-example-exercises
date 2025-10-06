@@ -1,0 +1,48 @@
+# ==============================
+# Core Scientific Computing & Data Manipulation
+# ==============================
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+matplotlib>=3.7.0
+seaborn>=0.12.2
+
+# ==============================
+# General Machine Learning
+# ==============================
+scikit-learn>=1.3.0
+xgboost>=1.7.6   # Gradient-Boosted Trees
+joblib>=1.3.0    # Saving/loading models
+Pillow>=10.0.0   # Image processing (PIL)
+
+# ==============================
+# Deep Learning Frameworks
+# ==============================
+tensorflow>=2.15.0   # TensorFlow 2.x
+torch>=2.1.0         # PyTorch core
+torchvision>=0.16.0  # Computer vision utilities
+torchtext>=0.17.0    # NLP datasets and tools
+torchsummary>=1.5.1  # Model summary utilities
+
+# ==============================
+# NLP & Multimodal AI
+# ==============================
+transformers>=4.35.0            # Hugging Face Transformers
+sentence-transformers>=2.2.2    # Embeddings, e.g., CLIP
+openai>=1.3.0                   # OpenAI API access
+nltk>=3.8.0                     # Traditional NLP
+spacy>=3.6.0                    # Advanced NLP
+# Note: Download spaCy models separately if needed:
+# python -m spacy download en_core_web_sm
+
+# ==============================
+# Reinforcement Learning (RL)
+# ==============================
+gymnasium>=0.30.0  # Modern successor to OpenAI Gym
+
+# ==============================
+# Optional Notes
+# ==============================
+# - Only install both TensorFlow and PyTorch if your project requires both.
+# - Consider pinning versions for exact reproducibility.
+# - Add any other domain-specific libraries as needed.
