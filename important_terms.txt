@@ -1,0 +1,758 @@
+THE TERMS ARE ONE THAT ARE IMPORTANT BUT NOT FREQUENT
+
+- Transfer learning
+- out-of-core learning
+- MapReduce technique
+- data snooping bias
+
+Cross Validation :
+- 10-Fold Cross Validation
+- Leave-One-Out
+
+Probability Theory
+- mean
+- variance
+- standard deviation
+- Bayes Naive
+
+Consistency
+Estimators
+Transformers
+Predictors
+Inspection
+Composition
+
+normalization
+standardization
+bucketizing
+radial basis function
+rule of thumb
+
+
+
+Classification
+
+
+The receiver operating characteristic (ROC)
+the true
+positive rate (another name for recall)
+the false positive rate (FPR).
+The FPR (also called the fall-out)
+1 – the true negative rate (TNR)
+TPR and FPR 
+threshold
+area under the curve
+(AUC)
+ ROC AUC equal to 1
+purely random classifier will have a ROC AUC equal to 0.5
+one-versus-the-rest (OvR)
+one-versus-all (OvA).
+one-versus-one (OvO) 
+MNIST
+__________________________________________________________________________________________________________________________________________
+
+Stat quest :
+
+* Probability Theory
+- mean
+- variance
+- standard deviation
+- Bayes Naive
+*
+
+Sum of the Squared Residuals
+Mean Squared Error (MSE)
+R squared  {the best}
+Pearson’s correlation coefficient (p-value)
+Iterative Method called Gradient Descent
+analytical solution(double derivative)
+
+Loss Function
+Cost Function
+
+Step Size
+Learning Rate
+
+Gradient Descent
+Stochastic Gradient Descent
+ 
+Logistic Regression
+Receiver Operator Curves (ROCs)
+Underflow  Training Dataset was much larger,
+
+Naive Bayes
+Multinomial Naive Bayes
+Prior Probability
+Gaussian Naive Bayes
+Multinomial and Gaussian Naive Bayes
+
+
+Assessing Model Performance
+Confusion Matrices
+Receiver Operator Curves (ROCs)
+Sensitivity,Specificity
+Precision and Recall
+I have trouble
+remembering what Sensitivity,
+Specificity, Precision, and
+Recall mean.
+
+
+Regularization
+Ridge/Squared/L2 Regularization
+Ridge Score
+Ridge Penalty
+Lasso/Absolute Value/L1 Regularization
+
+
+Decision Trees
+Classification and Regression Trees
+Root Node / Internal Node / Leaf Node
+Impurity
+Gini Impurity / Entropy / Information Gain
+
+
+Support Vector Classifiers
+Support Vector Machines
+Margin / Soft Margin
+
+Kernel Functions Polynomial Kernel
+and the Radial Kernel, also known as
+the Radial Basis Function.
+Dot Products
+Lagrangian
+Multiplier Method
+
+
+Neural Networks
+Activation Functions
+Input Nodes ;Input Layer
+Hidden Layers
+Output Nodes ; Output Layer
+
+Activation Functions 
+ReLU : Rectified Linear Unit ;Bent Line
+SoftPlus  ,Curve
+Sigmoid Activation Function :s-shaped squiggle
+
+Backpropagation
+Weights and Biases
+Final Bias
+SSR
+
+______________________________________________________________________________________________________________________________________
+ 
+Laplace smoothing
+
+Best practice :
+-Imbalanced datasets in classification problems : Oversampling ,Undersampling ,Class weighting
+- guidelines for choosing the testing split :Small datasets , Medium to large datasets , simple models , Complex models
+- fixed random_state (for example, 42) 
+
+Binary classification 
+
+Multiclass classification
+
+Confusion matrix
+Precision
+Recall
+F1 score
+The area under the curve
+Area Under the Curve (AUC) of the Receiver Operating Characteristic (ROC) 
+k-fold cross-validation : small data (5 to 10) and big data (3 to 4)
+alpha :smothing factor
+fit_prior : whether to use prior tailored to the training data
+
+
+one-hot encoding/get_dummies() / Categorical Features
+
+retrain the model with the best set of hyperparameters
+
+CHAPTER 3:
+Class purity 
+algorithms have been developed to efficiently construct an accurate decision tree :
+- ID3: Basic, uses yes/no splits, no backtracking.
+- C4.5: Upgraded ID3, handles numbers, prunes trees.
+- CART: Binary splits, works for numbers & categories.
+- CHAID: Stats-heavy, great for categories (e.g., marketing)
+
+This partitioning process :
+The minimum number of samples for a new node
+The maximum depth of the tree 
+
+The metrics for measuring a split:
+- Gini Impurity
+- Information Gain
+
+Best practice :
+1. Encode categoricals (LabelEncoder/OneHotEncoder)
+2. Scale numericals (StandardScaler/MinMaxScaler)
+
+
+The ensemble : technique of bagging  (bootstrap aggregating)
+majority vote
+feature-based bagging
+
+hyperparameters :
+
+  individual decision trees:
+
+	- max_depth  : too deep overfit ,too shallow underfit
+	- min_samples_split : too small overfit , too large underfit ,10, 30, and 50 might be good options
+
+  random forest or collection of trees:
+
+	- max_features: Features per split ("sqrt", "log2", or 0.2-0.5 of total)
+	- n_estimators: Number of trees (100-500 balance speed/performance)
+
+
+Boosting
+Gradient-Boosted Trees (Gradient-Boosting Machines)
+
+# GBT in 3 Lines:
+'''
+1. Starts with weak model (tree), then adds trees sequentially
+2. Each new tree corrects residuals (errors) from previous ensemble
+3. Final prediction = sum of all tree outputs (weighted by learning_rate)
+'''
+
+INIT → FIT → CORRECT → COMBINE
+  │       │        │        │
+Simple  New     Focus   Weighted
+model   tree   on errors  sum
+
+
+┌───────────────┬──────────────────┬──────────────────┬──────────────────┐
+│               │ Decision Tree    │ Random Forest    │ GBT              │
+├───────────────┼──────────────────┼──────────────────┼──────────────────┤
+│ Complexity    │ Simple           │ Medium           │ High             │
+│ Interpretability │ High          │ Medium           │ Low              │
+│ Best For      │ Small data       │ General purpose  │ Complex problems │
+│ Speed         │ Fastest          │ Fast (parallel)  │ Slow (sequential)│
+│ Overfitting   │ High risk        │ Low risk         │ Medium risk      │
+└───────────────┴──────────────────┴──────────────────┴──────────────────┘
+
+1. Decision Tree (CART):
+   - Pros: Simple, interpretable, fast
+   - Cons: Prone to overfitting
+   - When to use: Small datasets, need explainability
+   - Key params: max_depth, min_samples_split
+
+2. Random Forest:
+   - Pros: Robust, handles noise/outliers, parallelizable
+   - Cons: Less interpretable, memory-intensive
+   - When to use: Medium/large datasets, general use
+   - Key params: n_estimators, max_features
+
+3. GBT (XGBoost/LightGBM):
+   - Pros: State-of-the-art accuracy, handles mixed data
+   - Cons: Sensitive to overfitting, sequential training
+   - When to use: Complex problems, competition-grade models
+   - Key params: learning_rate, n_estimators, max_depth
+
+
+Chapter 4
+
+one-hot encoding
+ordinal encoding
+
+Best practice :
+
+To handle high dimensionality when using one-hot encoding :
+
+1. Feature Selection: Keep only important features (SelectKBest, L1 regularization)
+2. Dimension Reduction: PCA/SVD for dense/sparse data
+3. Feature Aggregation: Group rare categories as "Other"
+4. Alternatives: Use target/hash encoding for high-cardinality
+
+
+intercept / bias
+
+Gradient descent /steepest descent
+
+learning rate, step size
+
+stochastic gradient descent (SGD)
+
+regularization L1 (also called Lasso) and L2 (also called Ridge).
+
+Feature selection using random forest or  L1 regularization
+
+online/offline learning
+partial_fit
+
+multiclass classification
+multinomial logistic regression / softmax regression
+
+Regression / features
+
+Chapter 5
+
+linear regression
+
+intercept/bias
+
+layer
+
+Decision tree regression
+recursive binary splitting
+weighted purity
+
+the weighted MSE of two children
+MSE of a child is equivalent to the variance of all target values, and the smaller the weighted MSE, the better the split
+The average value of targets in a terminal node becomes the leaf value, instead of the majority of labels in the classification tree
+
+Regression Metrics Quick-Check:
+MSE: avg squared errors, sensitive to outliers
+
+RMSE: sqrt(MSE), same units as target
+
+MAE: avg absolute errors, robust to outliers
+
+R²: variance explained, higher = better
+
+Adjusted R²: R² penalized by number of features
+
+Best Practice:
+For time series, always split train/test chronologically—test data must follow training data—to respect temporal dependencies and ensure realistic forecasting.
+
+Best Practice:
+To avoid overfitting in time series, use L1/L2 regularization and apply time series–aware cross-validation that preserves temporal order during hyperparameter tuning.
+
+
+chapter 6 :
+
+Artificial Neural Networks (ANNs) / neural networks
+
+Layers ( nodes/units )
+In binary classification, the output layer contains only one node 
+In multiclass classification, the output layer consists of n nodes
+feedforward (logistic regression)
+
+Activation functions
+Universal Approximation Theorem
+feedforward
+
+Backpropagation
+The chain rule
+
+
+The Adam optimizer : replacement of the stochastic gradient descent algorithm
+inference
+
+suboptimal solution
+sparsity
+dying negative
+
+activation functions :
+
+- Linear
+- Sigmoid (logistic)
+- Tanh
+- ReLU
+- Leaky ReLU
+
+
+- Leaky ReLU if issues arise.  
+
+in Output Layer:
+
+  - Regression → Linear
+
+
+
+
+
+Best Practice for Dropout Rate :
+
+1. Start low (0.1–0.2), train, and check validation metrics.
+2. Increase rate gradually (e.g., +0.1), retrain, and monitor results.
+3. Compare results: too high = underperformance, too low = overfitting risk.
+
+
+Best Practrices Hyperparameter tuning :
+
+- Define search space — pick which hyperparameters to tune (e.g., learning rate, batch size, layers, neurons, activations, dropout) and set ranges.
+
+- Use cross-validation — gives a more reliable estimate and reduces overfitting risk.
+
+- Monitor metrics — track loss and task-relevant metrics (accuracy, precision/recall, MSE, R²) on train and validation sets.
+
+- Early stopping — stop when validation loss rises while training loss keeps falling.
+
+- Regularize — apply L1/L2 and dropout to reduce overfitting.
+
+- Experiment different architectures — vary depth/width and activations (deep vs shallow, wide vs narrow).
+
+- Parallelize search — run experiments in parallel if you have multiple GPUs/machines (e.g., torch.nn.DataParallel, tf.distribute.Strategy).
+
+Preventing overfitting in neural networks :
+- Dropout
+- Early stopping
+
+
+Chapter 7 
+
+ontology
+part-of-speech (PoS) tagging
+Sentiment analysis
+Named Entity Recognition (NER)
+
+Other key NLP applications include:
+- Language translation
+- Speech recognition
+- Text summarization
+- Language generation / Generative Pre-trained Transformers (GPTs)
+- Information retrieval
+
+
+(NLTK), spaCy, Gen-sim, and TextBlob
+
+Tokenization : input ; unigrams ; bigram, trigram , n-gram
+
+Stemming and lemmatization
+lemma (base or canonical form )
+
+Stemming sometimes involves the chopping of letters if necessary, as you can see
+in machin in the preceding command output.
+
+Semantics and topic modeling :
+
+- Topic Modeling: Finds word patterns (e.g., LDA, LSI algorithms).
+
+- Word Embeddings: Represents words as vectors (e.g., Word2Vec).
+
+- Similarity Queries: Finds similar words/documents (uses embeddings).
+
+- Scalability: Handles millions of documents (supports distributed computing).
+
+
+Capitalization does matter – for
+instance, if we’re trying to find out whether a document is about the band called The Doors or the
+more common concept, the doors (made of wood or another material).
+
+Bag of Words (BoW) 
+
+Dropping stop words
+Reducing inflectional and derivational forms of words
+t-SNE (t-distributed Stochastic Neighbor Embedding. )
+dimensionality reduction
+Principal Component Analysis (PCA)
+Non-negative Matrix Factorization (NMF)
+
+word2vec (see Efficient Estimation of Word Representations in Vector Space )
+Continuous Bag of Words (CBOW)
+skip-gram
+word window
+
+TF-IDF score
+Max/min pooling 
+
+Best Practice of Word embedding visualization helps see patterns, relationships, and model quality :
+
+  * Use **dimensionality reduction** (PCA, t-SNE) to project embeddings into 2D/3D.
+  * Use **clustering** to group similar words by meaning or context.
+
+
+
+
+Best Practices Document embeddings = aggregated word embeddings (average, sum, weighted, or pooling). :
+
+After computing word embeddings for all words in a document, you need to combine them into one document vector.
+
+- Simple methods:
+
+	* Average → take the mean of all word vectors.
+
+	* Summation → add up all word vectors.
+
+- More advanced methods:
+
+	* Weighted average → give more weight to important words (e.g., using TF-IDF).
+
+	* Max/Min pooling → take the maximum (or minimum) value per dimension across all word embeddings.
+
+
+Chapter 8 :
+
+attributes, observations, or predictive variables
+
+targets or target variables
+
+labeled data / unlabeled data
+
+k-means
+
+Clustering / Association (also called anomaly detection)  / Projection
+
+Clustering (Grouping):
+	Example: Group similar news articles.
+	Use: Customer segmentation, behavior analysis.
+Association/Anomaly Detection:
+	Example: Spot rare/fraudulent transactions.
+	Use: Outlier detection, recommendation systems.
+Projection (Dimensionality Reduction):
+	Example: Simplify text data (like t-SNE).
+	Use: Visualizing complex data, removing noise
+
+
+
+elbow method    sum of squared errors,  SSE (called the sum of within-cluster distances),
+
+
+Best practice measure for distance calculation in k-means clustering depends on the nature of your data and the specific goals :
+
+- Euclidean Distance - Default choice for most continuous numerical data where the actual distance between points matters.
+
+- Manhattan Distance - Better for high-dimensional spaces or when features have different scales/units.
+
+- Cosine Similarity - Ideal for text documents, NLP applications, or any case where vector direction is more important than magnitude.
+
+- Jaccard Similarity - Perfect for binary data, presence/absence features, or market basket analysis.
+Euclidean distance. Manhattan distance and Chebyshev distance
+
+
+
+DBSCAN clusters data based on density rather than centroids, requiring no preset cluster count. It identifies arbitrary-shaped clusters and labels outliers as noise using just two parameters: neighborhood distance (ε) and minimum points per cluster .
+
+
+Topic modeling using NMF
+
+Latent Dirichlet Allocation (LDA).
+
+
+Chapter 9 :
+
+Support Vector Machine (SVM)
+
+principal component analysis
+
+hyperplane
+
+support vectors.
+decision hyperplane
+
+ maximum-margin
+hinge loss
+
+one-vs-rest / one-vs-all
+one-vs-one
+
+C controls the strictness of separation
+
+
+Radial Basis Function (RBF)  / Gaussian kernel
+
+polynomial kernel
+sigmoid kernel
+
+Labeled Faces in the Wild (LFW)
+
+Best Practices :
+- unsure about the suitable value of gamma to start with for RBF kernel, best is 1 divided by the feature dimension is consistently a reliable , like : 1/2914 = 0.0003
+
+
+LinearSVC
+
+Principal Component Analysis (PCA):
+1. Standardize
+   * Center and scale all features so they have mean 0 and variance 1.
+2. Covariance Matrix
+   * Compute how features vary together (relationships between variables).
+3. Eigendecomposition
+   * Extract eigenvectors (the principal components) and eigenvalues (the importance of each component).
+4. Select Components
+   * Choose the top k components with the highest eigenvalues.
+5. Project
+   * Transform the original data onto the selected components to obtain the lower-dimensional representation.
+
+
+Best Practices SVM Hyperparameter Tuning:
+
+1. Start Coarse, Then Refine
+
+   * Begin with a wide, logarithmic range for C and gamma (e.g., \[0.001, 0.01, 0.1, 1, 10, 100]).
+   * Goal: Quickly map the performance landscape and identify promising regions.
+
+2. Leverage Domain Knowledge
+
+   * Noisy data or outliers? → Start with a larger C (e.g., 10, 100) to allow a softer margin.
+   * Clean, separable data? → Start with a smaller C (e.g., 0.1, 1) for a wider, more generalizable margin.
+
+3. Always Use Cross-Validation (CV)
+
+   * Use GridSearchCV or RandomizedSearchCV to evaluate hyperparameters.
+   * CV provides a reliable estimate of model performance on unseen data and prevents overfitting to the training set.
+
+4. Iterate the Search
+
+   * After the initial coarse search, narrow the range around the best-performing values.
+   * Example: If C=10 and gamma=0.01 were best, try a finer grid like:
+
+     * C: \[1, 5, 10, 15, 20]
+     * gamma: \[0.005, 0.01, 0.015]
+
+
+
+chapter 10 :
+
+• Data preparation
+• Training set generation
+• Model training, evaluation, and selection
+• Deployment and monitoring
+
+Collecting : consistency and completeness
+
+normalization
+
+missing data imputation
+
+scale up and scale out:
+
+cloud or distributed filesystems.
+
+Hadoop Distributed File System (HDFS) 
+
+Data partitioning :Split data into smaller chunks to spread the workload and allow for faster parallel processing.
+
+Data compression and encoding :Shrink the data to save space and speed up transfer times.
+
+Replication and redundancy :Copy data to multiple locations to prevent loss if one machine fails.
+
+Security and access control :Control who can access the data to keep it safe.
+
+
+reduce dimensionality by Principal Component Analysis (PCA)
+
+Binarization and discretization
+
+Interaction
+
+Polynomial transformation
+
+
+TF & TF-IDF
+
+Modern: Word Embeddings Word2Vec
+
+Embedding layers in custom neural networks
+
+Sampling and subset selection
+
+Distributed computing
+
+Feature engineering
+
+Parallelization
+
+Memory management
+
+Optimized libraries
+
+Incremental learning
+
+
+Chapter 11 :
+
+feature map 
+
+Key features of DataLoader:
+
+Batching: Splits dataset into batches of set size for mini-batch training.
+
+Shuffling: Set shuffle=True to randomize data each epoch, improving convergence and reducing bias.
+
+
+
+Best Practices (GPU vs CPU ):
+
+GPU-suited operations:
+
+* Matrix & convolution operations
+* Large batch processing (e.g., training/inference on mini-batches)
+* Neural network forward/backward propagation
+
+CPU-suited operations:
+
+* Data preprocessing (loading, feature extraction, augmentation)
+* Inference on small models
+* Control flow tasks (loops, conditionals)
+
+Data augmentation
+
+Transfer learning
+
+	Pretrained model
+
+	Feature Extraction
+	
+	Fine-Tuning
+
+pretrained models
+	 LeNet-5 ,AlexNet ,VGGNet, GoogLeNet, and ResNet
+
+Chapter 12 :
+
+sequential learning
+
+discrepancy
+
+Part-of-Speech (PoS)
+
+sequence modeling
+
+recurrent mechanism.
+
+
+Many to one
+
+One to many
+
+Many to many (synced)
+
+Many to many (unsynced)
+
+
+RNN from Toronto :
+
+Feed-forward neural nets
+
+Autoregressive models
+
+Memoryless models
+
+Back Propagation Through Time (BPTT)
+
+vanishing gradient problem
+
+LSTM
+LSTM and gated recurrent units (GRUs)
+
+Best practice choose lstm vs Gru :
+
+**Model Complexity**:
+  	* *LSTM*: More parameters (more complex)
+  	* *GRU*: Fewer parameters (simpler, better for smaller datasets or limited resources)
+
+*Training Speed**:
+	  * *LSTM*: Slower
+	  * *GRU*: Faster
+
+*Performance**:
+  	* *LSTM*: Better at capturing long-term dependencies
+  	* *GRU*: Performs well, but may struggle with very long sequences
+
+
+Best Practices for `<pad>` and `<unk>` Tokens**
+
+
+  * Pad sequences *at the end*, not the beginning
+  * Assign a unique index (e.g., 0) → embed as a **zero vector**
+  * Ensures fixed-length inputs for batch processing
+  * *Exclude* from loss calculations during training
+
+* **`<unk>` Token (Unknown Words)**
+
+  * Replace out-of-vocabulary words with `<unk>`
+  * Helps model handle unseen words during inference
+  * Monitor `<unk>` frequency → adjust vocab size if needed
